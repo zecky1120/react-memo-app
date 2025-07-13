@@ -7,9 +7,9 @@
   box-sizing: border-box;
 }
 :root {
-  font-family: "Inter", "游ゴシック体", YuGothic, "游ゴシック Medium",
-    "Yu Gothic Medium", "游ゴシック", "Yu Gothic", system-ui, Avenir, Helvetica,
-    Arial, sans-serif;
+  font-family:
+    "Inter", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.8;
   font-weight: 400;
   color: #000;
