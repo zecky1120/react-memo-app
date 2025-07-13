@@ -1,0 +1,42 @@
+header {
+  background-color: #ffde33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.logo {
+  font-size: 1.5rem;
+}
+.wrapper {
+  padding: 32px 16px;
+}
+.container {
+  max-width: 48rem;
+  width: 100%;
+  padding: 40px 32px;
+  background-color: #fff;
+  gap: 40px;
+  border: 8px;
+}
+.memo-list-container {
+  width: 50%;
+  gap: 32px;
+}
+.memo-list {
+  gap: 16px;
+}
+.memo-list-item {
+  flex-grow: 1;
+}
+.memo-list-item-link {
+  border: 1px solid #ffde33;
+  border-radius: 4px;
+  background-color: #fff7cc;
+  color: #000;
+  padding: 8px 12px;
+}
+.memo-list-item-link:hover {
+  background-color: #ffde33;
+  cursor: pointer;
+}
