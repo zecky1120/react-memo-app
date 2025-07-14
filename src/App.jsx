@@ -1,6 +1,6 @@
 import "./common/Common.css";
-import "./components/Memo.css";
-import Memo from "./components/Memo";
+import "./components/MemoApp.css";
+import MemoApp from "./components/MemoApp";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       </header>
       <div className="d-flex align-items-center justify-content-center wrapper">
         <div className="d-flex justify-content-center container">
-          <Memo />
+          <MemoApp />
         </div>
       </div>
     </>

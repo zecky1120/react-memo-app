@@ -2,7 +2,7 @@ import Button from "./Button";
 import Form from "./Form";
 import useMemoHooks from "./useMemoHooks";
 
-export default function Memo() {
+export default function MemoApp() {
   const [
     addMemo,
     updateMemo,
