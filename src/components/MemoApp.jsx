@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Form from "./Form";
-import useMemoHooks from "./useMemoHooks";
+import useMemoHooks from "../memoHooks/useMemoHooks";
 
 export default function MemoApp() {
   const [
