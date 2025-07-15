@@ -1,15 +1,7 @@
 import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-export default function useMemo() {
-  const storedMemos = JSON.parse(localStorage.getItem("memos") ?? "null") ?? [];
-  const [memos, setMemos] = useState(storedMemos);
-  const [memo, setMemo] = useState({
-    title: "",
-    content: "",
-  });
-  const [status, setStatus] = useState(null);
-
+export default function useMemo({ memos, setMemos, memo, setMemo, setStatus }) {
   useEffect(() => {
     localStorage.setItem("memos", JSON.stringify(memos));
   }, [memos]);
@@ -43,24 +35,5 @@ export default function useMemo() {
     setStatus(null);
   };
 
-  const handleToggleMemoForm = (mode, memo) => {
-    setStatus(mode);
-    if (mode === "new") {
-      setMemo({ title: "", content: "" });
-    } else if (mode === "edit") {
-      setMemo(memo);
-    }
-  };
-
-  return [
-    addMemo,
-    updateMemo,
-    destroyMemo,
-    handleToggleMemoForm,
-    memo,
-    memos,
-    status,
-    setMemo,
-    setStatus,
-  ];
+  return { addMemo, updateMemo, destroyMemo };
 }

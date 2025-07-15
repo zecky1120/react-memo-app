@@ -1,19 +1,34 @@
 import Button from "./Button";
 import Form from "./Form";
 import useMemoHooks from "../memoHooks/useMemoHooks";
+import { useState } from "react";
 
 export default function MemoApp() {
-  const [
-    addMemo,
-    updateMemo,
-    destroyMemo,
-    handleToggleMemoForm,
-    memo,
+  const storedMemos = JSON.parse(localStorage.getItem("memos") ?? "null") ?? [];
+  const [memos, setMemos] = useState(storedMemos);
+  const [memo, setMemo] = useState({
+    title: "",
+    content: "",
+  });
+  const [status, setStatus] = useState(null);
+
+  const { addMemo, updateMemo, destroyMemo } = useMemoHooks({
     memos,
-    status,
+    setMemos,
+    memo,
     setMemo,
     setStatus,
-  ] = useMemoHooks();
+  });
+
+  const handleNewMemo = (mode) => {
+    setStatus(mode);
+    setMemo({ title: "", content: "" });
+  };
+
+  const handleEditMemo = (mode, memo) => {
+    setStatus(mode);
+    setMemo(memo);
+  };
 
   return (
     <>
@@ -26,7 +41,7 @@ export default function MemoApp() {
           ) : (
             memos.map((memo) => (
               <li
-                onClick={() => handleToggleMemoForm("edit", memo)}
+                onClick={() => handleEditMemo("edit", memo)}
                 key={memo.id}
                 className="memo-list-item"
               >
@@ -37,10 +52,7 @@ export default function MemoApp() {
             ))
           )}
         </ul>
-        <Button
-          text="新規追加する"
-          onClick={() => handleToggleMemoForm("new")}
-        />
+        <Button text="新規追加する" onClick={() => handleNewMemo("new")} />
       </div>
       {status !== null && (
         <Form memo={memo} setMemo={setMemo} setStatus={setStatus}>
