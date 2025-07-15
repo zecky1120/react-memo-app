@@ -48,7 +48,7 @@ export default function useMemo() {
     if (mode === "new") {
       setMemo({ title: "", content: "" });
     } else if (mode === "edit") {
-      setMemo({ id: memo.id, title: memo.title, content: memo.content });
+      setMemo(memo);
     }
   };
 
