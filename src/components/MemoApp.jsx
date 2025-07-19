@@ -15,14 +15,11 @@ export default function MemoApp() {
   const { addMemo, updateMemo, destroyMemo } = useMemoHooks({
     memos,
     setMemos,
-    memo,
-    setMemo,
-    setStatus,
   });
 
   const handleNewMemo = (mode) => {
-    setStatus(mode);
     setMemo({ title: "", content: "" });
+    setStatus(mode);
   };
 
   const handleEditMemo = (mode, memo) => {
@@ -58,13 +55,31 @@ export default function MemoApp() {
         <Form memo={memo} setMemo={setMemo} setStatus={setStatus}>
           {status === "new" && (
             <div className="d-flex justify-content-center">
-              <Button text="追加する" onClick={() => addMemo()} />
+              <Button
+                text="追加する"
+                onClick={() => {
+                  addMemo(memo);
+                  setStatus(null);
+                }}
+              />
             </div>
           )}
           {status === "edit" && (
             <div className="d-flex justify-content-between">
-              <Button text="更新する" onClick={() => updateMemo()} />
-              <Button text="削除する" onClick={() => destroyMemo()} />
+              <Button
+                text="更新する"
+                onClick={() => {
+                  updateMemo(memo);
+                  setStatus(null);
+                }}
+              />
+              <Button
+                text="削除する"
+                onClick={() => {
+                  destroyMemo(memo);
+                  setStatus(null);
+                }}
+              />
             </div>
           )}
         </Form>
