@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Form from "./Form";
-import useMemoHooks from "../memoHooks/useMemoHooks";
+import useMemoHooks from "../hooks/useMemo";
 import { useState } from "react";
 
 export default function MemoApp() {
