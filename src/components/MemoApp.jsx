@@ -4,18 +4,12 @@ import useMemoHooks from "../hooks/useMemo";
 import { useState } from "react";
 
 export default function MemoApp() {
-  const storedMemos = JSON.parse(localStorage.getItem("memos") ?? "null") ?? [];
-  const [memos, setMemos] = useState(storedMemos);
+  const { memos, addMemo, updateMemo, destroyMemo } = useMemoHooks();
   const [memo, setMemo] = useState({
     title: "",
     content: "",
   });
   const [status, setStatus] = useState(null);
-
-  const { addMemo, updateMemo, destroyMemo } = useMemoHooks({
-    memos,
-    setMemos,
-  });
 
   const handleNewMemo = (mode) => {
     setMemo({ title: "", content: "" });
