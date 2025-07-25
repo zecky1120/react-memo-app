@@ -6,7 +6,13 @@ export default function Form(props) {
   }
 
   function handleInputForm(e) {
-    props.setMemo((memo) => ({ ...memo, [e.target.name]: e.target.value }));
+    props.setMemoState((memoState) => ({
+      ...memoState,
+      memo: {
+        ...memoState.memo,
+        [e.target.name]: e.target.value,
+      },
+    }));
   }
 
   return (

@@ -5,20 +5,28 @@ import { useState } from "react";
 
 export default function MemoApp() {
   const { memos, addMemo, updateMemo, destroyMemo } = useMemoHooks();
-  const [memo, setMemo] = useState({
-    title: "",
-    content: "",
+  const [memoState, setMemoState] = useState({
+    memo: {
+      title: "",
+      content: "",
+    },
+    status: null,
   });
-  const [status, setStatus] = useState(null);
 
   const handleNewMemo = (mode) => {
-    setMemo({ title: "", content: "" });
-    setStatus(mode);
+    setMemoState((memoState) => ({
+      ...memoState,
+      memo: { title: "", content: "" },
+      status: mode,
+    }));
   };
 
   const handleEditMemo = (mode, memo) => {
-    setStatus(mode);
-    setMemo(memo);
+    setMemoState((memoState) => ({
+      ...memoState,
+      memo: memo,
+      status: mode,
+    }));
   };
 
   return (
@@ -45,33 +53,42 @@ export default function MemoApp() {
         </ul>
         <Button text="新規追加する" onClick={() => handleNewMemo("new")} />
       </div>
-      {status !== null && (
-        <Form memo={memo} setMemo={setMemo} setStatus={setStatus}>
-          {status === "new" && (
+      {memoState.status !== null && (
+        <Form memo={memoState.memo} setMemoState={setMemoState}>
+          {memoState.status === "new" && (
             <div className="d-flex justify-content-center">
               <Button
                 text="追加する"
                 onClick={() => {
-                  addMemo(memo);
-                  setStatus(null);
+                  addMemo(memoState.memo);
+                  setMemoState((m) => ({
+                    ...m,
+                    status: null,
+                  }));
                 }}
               />
             </div>
           )}
-          {status === "edit" && (
+          {memoState.status === "edit" && (
             <div className="d-flex justify-content-between">
               <Button
                 text="更新する"
                 onClick={() => {
-                  updateMemo(memo);
-                  setStatus(null);
+                  updateMemo(memoState.memo);
+                  setMemoState((m) => ({
+                    ...m,
+                    status: null,
+                  }));
                 }}
               />
               <Button
                 text="削除する"
                 onClick={() => {
-                  destroyMemo(memo);
-                  setStatus(null);
+                  destroyMemo(memoState.memo);
+                  setMemoState((m) => ({
+                    ...m,
+                    status: null,
+                  }));
                 }}
               />
             </div>
