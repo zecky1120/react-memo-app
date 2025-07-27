@@ -5,28 +5,14 @@ import { useState } from "react";
 
 export default function MemoApp() {
   const { memos, addMemo, updateMemo, destroyMemo } = useMemoHooks();
-  const [memoState, setMemoState] = useState({
-    memo: {
-      title: "",
-      content: "",
-    },
-    status: null,
-  });
+  const [memo, setMemo] = useState(null);
 
-  const handleNewMemo = (mode) => {
-    setMemoState((memoState) => ({
-      ...memoState,
-      memo: { title: "", content: "" },
-      status: mode,
-    }));
+  const handleNewMemo = () => {
+    setMemo({ title: "", content: "" });
   };
 
-  const handleEditMemo = (mode, memo) => {
-    setMemoState((memoState) => ({
-      ...memoState,
-      memo: memo,
-      status: mode,
-    }));
+  const handleEditMemo = (memo) => {
+    setMemo(memo);
   };
 
   return (
@@ -40,7 +26,7 @@ export default function MemoApp() {
           ) : (
             memos.map((memo) => (
               <li
-                onClick={() => handleEditMemo("edit", memo)}
+                onClick={() => handleEditMemo(memo)}
                 key={memo.id}
                 className="memo-list-item"
               >
@@ -51,44 +37,35 @@ export default function MemoApp() {
             ))
           )}
         </ul>
-        <Button text="新規追加する" onClick={() => handleNewMemo("new")} />
+        <Button text="新規追加する" onClick={() => handleNewMemo()} />
       </div>
-      {memoState.status !== null && (
-        <Form memo={memoState.memo} setMemoState={setMemoState}>
-          {memoState.status === "new" && (
+      {memo !== null && (
+        <Form memo={memo} setMemo={setMemo}>
+          {!memo.id && (
             <div className="d-flex justify-content-center">
               <Button
                 text="追加する"
                 onClick={() => {
-                  addMemo(memoState.memo);
-                  setMemoState((m) => ({
-                    ...m,
-                    status: null,
-                  }));
+                  addMemo(memo);
+                  setMemo(null);
                 }}
               />
             </div>
           )}
-          {memoState.status === "edit" && (
+          {memo.id && (
             <div className="d-flex justify-content-between">
               <Button
                 text="更新する"
                 onClick={() => {
-                  updateMemo(memoState.memo);
-                  setMemoState((m) => ({
-                    ...m,
-                    status: null,
-                  }));
+                  updateMemo(memo);
+                  setMemo(null);
                 }}
               />
               <Button
                 text="削除する"
                 onClick={() => {
-                  destroyMemo(memoState.memo);
-                  setMemoState((m) => ({
-                    ...m,
-                    status: null,
-                  }));
+                  destroyMemo(memo);
+                  setMemo(null);
                 }}
               />
             </div>
