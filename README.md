@@ -1,12 +1,34 @@
-# React + Vite
+# メモアプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このメモアプリは、Vite と React を使用して作成された SPA（シングルページアプリケーション）です。 ローカル環境で実行することができ、メモの一覧表示、詳細表示、追加、編集、削除ができます。
 
-Currently, two official plugins are available:
+## 使い方
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 導入
 
-## Expanding the ESLint configuration
+1. 任意のディレクトリで`git clone`を実行し、コピーを作成する
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+$ git clone https://github.com/zecky1120/react-memo-app.git
+```
+
+2. 作成したコピーのディレクトリ`react-memo-app`に移動する
+
+```
+$ cd react-memo-app
+```
+
+3. アプリの実行に必要な npm パッケージをインストールする
+
+```
+$ npm install
+```
+
+### アプリを実行する
+
+```
+$ npm run dev
+```
+
+1. [http://localhost:5173/](http://localhost:5173/)ローカルサーバーを立ち上げます
+   （メモアプリが開きます）

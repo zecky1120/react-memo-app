@@ -1,0 +1,60 @@
+/*  
+  COMMON
+*/
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+:root {
+  font-family:
+    "Inter", "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #000;
+  font-feature-settings: "palt";
+  font-optical-sizing: auto;
+  font-variation-settings: "slnt" 0;
+}
+body {
+  margin: 0;
+  line-height: 1.8;
+  background-color: #fffbe5;
+  color: #000;
+  font-feature-settings: "palt";
+  font-optical-sizing: auto;
+  font-variation-settings: "slnt" 0;
+  height: 100vh;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.f-bold {
+  font-weight: bold;
+}
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
