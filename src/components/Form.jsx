@@ -11,6 +11,10 @@ export default function Form(props) {
   }
 
   const { login } = useAuthContext();
+  const isDisabled = {
+    disabled: !login,
+    readOnly: !login,
+  };
 
   return (
     <>
@@ -20,48 +24,24 @@ export default function Form(props) {
       >
         <div className="d-flex flex-column form-control-box">
           <label className="form-label">タイトル</label>
-          {/* {login ? (
-            <input
-              type="text"
-              className="form-control"
-              name="title"
-              value={props.memo.title}
-              onChange={handleInputForm}
-            ></input>
-          ) : (
-            <p>{props.memo.title}</p>
-          )} */}
           <input
             type="text"
             className="form-control"
             name="title"
             value={props.memo.title}
             onChange={handleInputForm}
-            disabled={login ? false : true}
-            readOnly={login ? false : true}
+            {...isDisabled}
           ></input>
         </div>
         <div className="d-flex flex-column form-control-box">
           <label className="form-label">内容</label>
-          {/* {login ? (
-            <textarea
-              rows={5}
-              className="form-control"
-              name="content"
-              value={props.memo.content}
-              onChange={handleInputForm}
-            ></textarea>
-          ) : (
-            <p>{props.memo.content}</p>
-          )} */}
           <textarea
             rows={5}
             className="form-control"
             name="content"
             value={props.memo.content}
             onChange={handleInputForm}
-            disabled={login ? false : true}
-            readOnly={login ? false : true}
+            {...isDisabled}
           ></textarea>
         </div>
         {props.children}
