@@ -19,33 +19,29 @@ export default function Form(props) {
         className="d-flex flex-column form-container"
       >
         <div className="d-flex flex-column form-control-box">
+          <label className="form-label">タイトル</label>
           {login ? (
-            <>
-              <label className="form-label">タイトル</label>
-              <input
-                type="text"
-                className="form-control"
-                name="title"
-                value={props.memo.title}
-                onChange={handleInputForm}
-              ></input>
-            </>
+            <input
+              type="text"
+              className="form-control"
+              name="title"
+              value={props.memo.title}
+              onChange={handleInputForm}
+            ></input>
           ) : (
             <p>{props.memo.title}</p>
           )}
         </div>
         <div className="d-flex flex-column form-control-box">
+          <label className="form-label">内容</label>
           {login ? (
-            <>
-              <label className="form-label">内容</label>
-              <textarea
-                rows={5}
-                className="form-control"
-                name="content"
-                value={props.memo.content}
-                onChange={handleInputForm}
-              ></textarea>
-            </>
+            <textarea
+              rows={5}
+              className="form-control"
+              name="content"
+              value={props.memo.content}
+              onChange={handleInputForm}
+            ></textarea>
           ) : (
             <p>{props.memo.content}</p>
           )}
