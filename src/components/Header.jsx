@@ -7,11 +7,13 @@ export default function Header() {
   return (
     <>
       <header>
-        <span className="logo f-bold">MemoApp</span>
-        <Button
-          text={login ? "ログアウト" : "ログイン"}
-          onClick={() => handleLogin()}
-        ></Button>
+        <div className="d-flex justify-content-between align-items-center header-container">
+          <span className="logo f-bold">MemoApp</span>
+          <Button
+            text={login ? "ログアウト" : "ログイン"}
+            onClick={() => handleLogin()}
+          ></Button>
+        </div>
       </header>
     </>
   );
