@@ -2,6 +2,7 @@ import Button from "./Button";
 import Form from "./Form";
 import useMemoHooks from "../hooks/useMemo";
 import { useState } from "react";
+import useAuthContext from "../hooks/useAuth";
 
 export default function MemoApp() {
   const { memos, addMemo, updateMemo, destroyMemo } = useMemoHooks();
@@ -14,6 +15,8 @@ export default function MemoApp() {
   const handleEditMemo = (memo) => {
     setMemo(memo);
   };
+
+  const { login } = useAuthContext();
 
   return (
     <>
@@ -37,11 +40,13 @@ export default function MemoApp() {
             ))
           )}
         </ul>
-        <Button text="新規追加する" onClick={() => handleNewMemo()} />
+        {login ? (
+          <Button text="新規追加する" onClick={() => handleNewMemo()} />
+        ) : null}
       </div>
       {memo !== null && (
         <Form memo={memo} setMemo={setMemo}>
-          {!memo.id && (
+          {!memo.id && login && (
             <div className="d-flex justify-content-center">
               <Button
                 text="追加する"
@@ -52,7 +57,7 @@ export default function MemoApp() {
               />
             </div>
           )}
-          {memo.id && (
+          {memo.id && login && (
             <div className="d-flex justify-content-between">
               <Button
                 text="更新する"

@@ -25,3 +25,6 @@
 .form-label {
   font-size: 12px;
 }
+.form-control-box p {
+  margin: 0;
+}
