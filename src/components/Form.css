@@ -22,6 +22,10 @@
   border-radius: 4px;
   width: 100%;
 }
+.form-control:disabled {
+  color: #adadad;
+  cursor: not-allowed;
+}
 .form-label {
   font-size: 12px;
 }
