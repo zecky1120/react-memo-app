@@ -10,10 +10,10 @@ export default function Form(props) {
     props.setMemo((memo) => ({ ...memo, [e.target.name]: e.target.value }));
   }
 
-  const { login } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
   const isDisabled = {
-    disabled: !login,
-    readOnly: !login,
+    disabled: !isLoggedIn,
+    readOnly: !isLoggedIn,
   };
 
   return (

@@ -16,7 +16,7 @@ export default function MemoApp() {
     setMemo(memo);
   };
 
-  const { login } = useAuthContext();
+  const { isLoggedIn } = useAuthContext();
 
   return (
     <>
@@ -40,13 +40,13 @@ export default function MemoApp() {
             ))
           )}
         </ul>
-        {login ? (
+        {isLoggedIn ? (
           <Button text="新規追加する" onClick={() => handleNewMemo()} />
         ) : null}
       </div>
       {memo !== null && (
         <Form memo={memo} setMemo={setMemo}>
-          {!memo.id && login && (
+          {!memo.id && isLoggedIn && (
             <div className="d-flex justify-content-center">
               <Button
                 text="追加する"
@@ -57,7 +57,7 @@ export default function MemoApp() {
               />
             </div>
           )}
-          {memo.id && login && (
+          {memo.id && isLoggedIn && (
             <div className="d-flex justify-content-between">
               <Button
                 text="更新する"
