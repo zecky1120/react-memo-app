@@ -1,5 +1,5 @@
 import "../components/Form.css";
-import useAuthContext from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export default function Form(props) {
   function handleSubmit(e) {
@@ -10,7 +10,7 @@ export default function Form(props) {
     props.setMemo((memo) => ({ ...memo, [e.target.name]: e.target.value }));
   }
 
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn } = useAuth();
   const isDisabled = {
     disabled: !isLoggedIn,
     readOnly: !isLoggedIn,

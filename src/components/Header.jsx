@@ -1,8 +1,8 @@
-import useAuthContext from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import Button from "./Button";
 
 export default function Header() {
-  const { isLoggedIn, handleLogin } = useAuthContext();
+  const { isLoggedIn, handleLogin } = useAuth();
 
   return (
     <>

@@ -2,7 +2,7 @@ import Button from "./Button";
 import Form from "./Form";
 import useMemoHooks from "../hooks/useMemo";
 import { useState } from "react";
-import useAuthContext from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 
 export default function MemoApp() {
   const { memos, addMemo, updateMemo, destroyMemo } = useMemoHooks();
@@ -16,7 +16,7 @@ export default function MemoApp() {
     setMemo(memo);
   };
 
-  const { isLoggedIn } = useAuthContext();
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
