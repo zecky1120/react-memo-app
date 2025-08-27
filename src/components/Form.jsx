@@ -1,4 +1,5 @@
 import "../components/Form.css";
+import useAuth from "../hooks/useAuth";
 
 export default function Form(props) {
   function handleSubmit(e) {
@@ -8,6 +9,8 @@ export default function Form(props) {
   function handleInputForm(e) {
     props.setMemo((memo) => ({ ...memo, [e.target.name]: e.target.value }));
   }
+
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
@@ -23,6 +26,8 @@ export default function Form(props) {
             name="title"
             value={props.memo.title}
             onChange={handleInputForm}
+            disabled={!isLoggedIn}
+            readOnly={!isLoggedIn}
           ></input>
         </div>
         <div className="d-flex flex-column form-control-box">
@@ -33,6 +38,8 @@ export default function Form(props) {
             name="content"
             value={props.memo.content}
             onChange={handleInputForm}
+            disabled={!isLoggedIn}
+            readOnly={!isLoggedIn}
           ></textarea>
         </div>
         {props.children}
