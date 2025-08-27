@@ -11,10 +11,6 @@ export default function Form(props) {
   }
 
   const { isLoggedIn } = useAuth();
-  const isDisabled = {
-    disabled: !isLoggedIn,
-    readOnly: !isLoggedIn,
-  };
 
   return (
     <>
@@ -30,7 +26,8 @@ export default function Form(props) {
             name="title"
             value={props.memo.title}
             onChange={handleInputForm}
-            {...isDisabled}
+            disabled={!isLoggedIn}
+            readOnly={!isLoggedIn}
           ></input>
         </div>
         <div className="d-flex flex-column form-control-box">
@@ -41,7 +38,8 @@ export default function Form(props) {
             name="content"
             value={props.memo.content}
             onChange={handleInputForm}
-            {...isDisabled}
+            disabled={!isLoggedIn}
+            readOnly={!isLoggedIn}
           ></textarea>
         </div>
         {props.children}
